@@ -12,5 +12,4 @@ data ={
 }
 
 response_placeholder = requests.post(url_placeholder, data=data)
-
 print(response_placeholder.text)
