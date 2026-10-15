@@ -3,18 +3,23 @@
 import requests
 
 # Jsonplaceholder api
-url_placeholder = "https://jsonplaceholder.typicode.com/posts"
+url = "https://www.bohuslaningen.se/asikt/ledare/nu-har-liberalerna-en-chans-att-utnyttja-sin-vagmastarposition.cda435b9-e785-4893-9eb4-d7da0c50afb3"
 
-# Query parameter
-parameters ={
-    "id": 50
-}
+response = requests.get(url)
 
-response_placeholder = requests.get(url_placeholder, params=parameters)
+if response.status_code == requests.codes.ok:
+    print(response.text)
 
-if response_placeholder.status_code == requests.codes.ok:
-    print("Request successful")
-    print(response_placeholder.headers)
-else:
-    print("Request failed")
+# # Query parameter
+# parameters ={
+#     "id": 50
+# }
+
+# response_placeholder = requests.get(url_placeholder, params=parameters)
+
+# if response_placeholder.status_code == requests.codes.ok:
+#     print("Request successful")
+#     print(response_placeholder.headers)
+# else:
+#     print("Request failed")
 
