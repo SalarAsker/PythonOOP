@@ -26,19 +26,50 @@ class CreditCard:
         return self.__number
 
     # Property Setter for the name attribute
-    @name.setter
-    def number(self,name):
-        if name:
-            self.__name = name
+    @number.setter
+    def number(self,number):
+        if number:
+            self.__number = number
         else:
-            raise ValueError("The name can not be empty")
+            raise ValueError("The account number can not be empty")
 
-    
+    # Only a property Getter for the balance attribute
+    # Property Getter should be first.
+    @property
+    def balance(self):
+        return self.__balance
 
-# Create a customer
-client1 = CreditCard("Alice","1010",1000)
-# Get the name using property getter
-print(client1.name)
-# Update name using property setter
-client1.name = "Alice Johansson"
-print(f"Name is update: {client1.name}")
+# --- DOMAIN METHODS (DEPOSIT & WITHDRAWAL) ---
+    def deposit(self, amount: float):
+        if amount > 0:
+            self.__balance += amount
+        else:
+            raise ValueError("Deposit amount must be positive")
+
+    def withdraw(self, amount: float):
+        if amount <= 0:
+            raise ValueError("Withdrawal amount must be positive")
+        if amount > self.__balance:
+            raise ValueError("Insufficient funds")
+        self.__balance -= amount
+
+    # --- DISPLAY METHOD ---
+    def __str__(self) -> str:
+        return f"CreditCard(Owner: {self.__name}, Number: {self.__number}, Balance: {self.__balance:.2f} kr)"
+
+
+# --- TESTING THE CLASS ---
+client1 = CreditCard("Alice", "1010", 1000.0)
+
+# Check read-only balance property (returns float)
+print(f"Current balance: {client1.balance} kr")  # Output: 1000.0
+
+# Perform deposits and withdrawals via domain methods
+client1.deposit(500.0)
+print(f"After deposit: {client1.balance} kr")     # Output: 1500.0
+
+client1.withdraw(200.0)
+print(f"After withdrawal: {client1.balance} kr")  # Output: 1300.0
+
+# Print full object summary
+print(client1)
