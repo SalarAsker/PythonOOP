@@ -1,18 +1,18 @@
 
 class Notebook:
     def __init__(self):
-        self.__note =[]
+        self._note =[]
 
     # Add notes
     def add_notes(self, note:str):
-        self.__note.append(note)
+        self._note.append(note)
 
     # Retrieve note
     def retrieve_note(self, index):
-        return self.__note[index]
+        return self._note[index]
 
     def all_notes(self):
-        return ",".join(self.__note)
+        return ",".join(self._note)
 
 
 class NotebookPro(Notebook):
@@ -24,7 +24,7 @@ class NotebookPro(Notebook):
        def find_notes(self, search_term):
            found = []
 
-           for note in self.__note: # This one will cause en error
+           for note in self._note: # This one will cause en error
                if search_term in note:
                    found.append(note)
 

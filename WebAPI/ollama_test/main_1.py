@@ -18,6 +18,6 @@ prompt = ChatPromptTemplate.from_template(
 chain = prompt | llm
 
 # Run the chain
-response = chain.invoke({"text_from_user": "LangChain was created to solve these issues. Langchain is a powerful framework designed to simplify the development of applications powered by large language models. It provides a set of tools, components, and interfaces that make it easy to build complex AI applications with features like memory, chains, and agents"})
+response = chain.invoke({"text_from_user": "Many object-oriented programming languages provide built-in features, typically through specific keywords, to protect class variables and methods. This keyword hides them from external clients while keeping them accessible to subclasses. Python, however, avoids unnecessary keywords and does not offer explicit language-level support for this. Instead, it relies on a widely accepted naming convention to indicate protected variables and methods."})
 
 print(response.content)
